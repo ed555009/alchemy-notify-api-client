@@ -1,14 +1,14 @@
 # Alchemy.Notify.Api.Client
 
-[![GitHub](https://img.shields.io/github/license/ed555009/fireblocks-api)](LICENSE)
-![Build Status](https://dev.azure.com/edwang/github/_apis/build/status/fireblocks-api?branchName=master)
-[![Nuget](https://img.shields.io/nuget/v/Fireblocks.Api)](https://www.nuget.org/packages/Fireblocks.Api)
+[![GitHub](https://img.shields.io/github/license/ed555009/alchemy-notify-api-client)](LICENSE)
+![Build Status](https://dev.azure.com/edwang/github/_apis/build/status/alchemy-notify-api-client?branchName=master)
+[![Nuget](https://img.shields.io/nuget/v/Alchemy.Notify.Api.Client)](https://www.nuget.org/packages/Alchemy.Notify.Api.Client)
 
-![Coverage](http://direct.link2me.com.tw:9000/api/project_badges/measure?project=fireblocks-api&metric=coverage&token=edde8bb242d724653b64036f7a3fe6cf539b3a1a)
-![Quality Gate Status](http://direct.link2me.com.tw:9000/api/project_badges/measure?project=fireblocks-api&metric=alert_status&token=edde8bb242d724653b64036f7a3fe6cf539b3a1a)
-![Reliability Rating](http://direct.link2me.com.tw:9000/api/project_badges/measure?project=fireblocks-api&metric=reliability_rating&token=edde8bb242d724653b64036f7a3fe6cf539b3a1a)
-![Security Rating](http://direct.link2me.com.tw:9000/api/project_badges/measure?project=fireblocks-api&metric=security_rating&token=edde8bb242d724653b64036f7a3fe6cf539b3a1a)
-![Vulnerabilities](http://direct.link2me.com.tw:9000/api/project_badges/measure?project=fireblocks-api&metric=vulnerabilities&token=edde8bb242d724653b64036f7a3fe6cf539b3a1a)
+![Coverage](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=coverage)
+![Quality Gate Status](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=alert_status)
+![Reliability Rating](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=reliability_rating)
+![Security Rating](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=security_rating)
+![Vulnerabilities](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=vulnerabilities)
 
 ## Description
 
