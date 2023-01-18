@@ -40,7 +40,7 @@ stages:
               command: push
               searchPatternPush: $(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.Tests.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg
               nuGetFeedType: external
-              publishFeedCredentials: Nuget-QuantFi
+              publishFeedCredentials: Nuget-github
 
   # Create tag
   - deployment: CreateTag
