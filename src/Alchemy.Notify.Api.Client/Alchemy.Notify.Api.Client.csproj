@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<PackageId>Alchemy.Notify.Api.Client</PackageId>
+	<Description>A nuget package for Alchemy Notify Api client using .NET6</Description>
+	<PackageTags>Alchemy;notify;blockchain;wallet;asset;vault;crypto</PackageTags>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PublishRepositoryUrl>true</PublishRepositoryUrl>
+	<RepositoryUrl>https://github.com/ed555009/alchemy-notify-api-client.git</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<IncludeSymbols>true</IncludeSymbols>
+	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="" />
+    <None Include="../../LICENSE" Pack="true" PackagePath="" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
+    <PackageReference Include="Refit" Version="6.3.2" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
+  </ItemGroup>
+</Project>
