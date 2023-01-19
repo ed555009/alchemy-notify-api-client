@@ -16,6 +16,9 @@ public class NotifyService : INotifyService
 		Models.Requests.CreateWebhookModel data) =>
 			await _notifyApi.CreateWebhookAsync(data);
 
+	public async Task<ApiResponse<object?>> DeleteWebhookAsync(string webhookId) =>
+		await _notifyApi.DeleteWebhookAsync(webhookId);
+
 	public async Task<ApiResponse<AllWebhooksModel>> GetAllWebhooksAsync() =>
 		await _notifyApi.GetAllWebhooksAsync();
 

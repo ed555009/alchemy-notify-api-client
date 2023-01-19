@@ -23,4 +23,10 @@ public interface INotifyService
 	/// https://docs.alchemy.com/reference/update-webhook-addresses
 	/// </summary>
 	Task<ApiResponse<object?>> UpdateWebhookAddressesAsync(UpdateWebhookAddressModel data);
+
+	/// <summary>
+	/// Delete Webhook<br/>
+	/// https://docs.alchemy.com/reference/delete-webhook
+	/// </summary>
+	Task<ApiResponse<object?>> DeleteWebhookAsync(string webhookId);
 }
