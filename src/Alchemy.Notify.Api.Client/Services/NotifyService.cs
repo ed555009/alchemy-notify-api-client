@@ -22,6 +22,9 @@ public class NotifyService : INotifyService
 	public async Task<ApiResponse<AllWebhooksModel>> GetAllWebhooksAsync() =>
 		await _notifyApi.GetAllWebhooksAsync();
 
+	public async Task<ApiResponse<object?>> ReplaceWebhookAddressesAsync(ReplaceWebhookAddressModel data) =>
+		await _notifyApi.ReplaceWebhookAddressesAsync(data);
+
 	public async Task<ApiResponse<object?>> UpdateWebhookAddressesAsync(UpdateWebhookAddressModel data) =>
 		await _notifyApi.UpdateWebhookAddressesAsync(data);
 }

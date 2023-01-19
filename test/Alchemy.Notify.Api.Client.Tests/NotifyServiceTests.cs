@@ -103,4 +103,27 @@ public class NotifyServiceTests : BaseServiceTests
 		// Then
 		Assert.Equal(HttpStatusCode.OK, result.StatusCode);
 	}
+
+	[Fact]
+	public async void ReplaceWebhookAddressesAsync_ShouldSucceedAsync()
+	{
+		// Given
+		_ = _notifyApiMock
+			.Setup(x => x.ReplaceWebhookAddressesAsync(It.IsAny<RequestModel.ReplaceWebhookAddressModel>()))
+			.Returns(CreateEmptyResponse(HttpStatusCode.OK));
+
+		// When
+		var result = await _notifyService.ReplaceWebhookAddressesAsync(new RequestModel.ReplaceWebhookAddressModel
+		{
+			WebhookId = _webhookId,
+			Addresses = new List<string>
+			{
+				_address1,
+				_address2
+			}
+		});
+
+		// Then
+		Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+	}
 }

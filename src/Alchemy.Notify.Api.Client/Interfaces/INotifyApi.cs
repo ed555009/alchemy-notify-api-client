@@ -16,6 +16,9 @@ public interface INotifyApi
 	[Patch("/update-webhook-addresses")]
 	Task<ApiResponse<object?>> UpdateWebhookAddressesAsync([Body] UpdateWebhookAddressModel payload);
 
+	[Put("/update-webhook-addresses")]
+	Task<ApiResponse<object?>> ReplaceWebhookAddressesAsync([Body] ReplaceWebhookAddressModel payload);
+
 	[Delete("/delete-webhook?webhook_id={webhookId}")]
 	Task<ApiResponse<object?>> DeleteWebhookAsync(string webhookId);
 }

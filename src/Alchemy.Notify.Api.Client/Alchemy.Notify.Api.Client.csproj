@@ -3,16 +3,16 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<PackageId>Alchemy.Notify.Api.Client</PackageId>
-	<Description>A nuget package for Alchemy Notify Api client using .NET6</Description>
-	<PackageTags>Alchemy;notify;blockchain;wallet;asset;vault;crypto</PackageTags>
-	<PackageLicenseFile>LICENSE</PackageLicenseFile>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PublishRepositoryUrl>true</PublishRepositoryUrl>
-	<RepositoryUrl>https://github.com/ed555009/alchemy-notify-api-client.git</RepositoryUrl>
-	<RepositoryType>git</RepositoryType>
-	<IncludeSymbols>true</IncludeSymbols>
-	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageId>Alchemy.Notify.Api.Client</PackageId>
+    <Description>A nuget package for Alchemy Notify Api client using .NET6</Description>
+    <PackageTags>Alchemy;notify;blockchain;wallet;asset;vault;crypto</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryUrl>https://github.com/ed555009/alchemy-notify-api-client.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <ItemGroup>
     <None Include="../../README.md" Pack="true" PackagePath="" />
