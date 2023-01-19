@@ -19,6 +19,12 @@ public interface INotifyService
 	Task<ApiResponse<ResponseModel.CreateWebhookModel>> CreateWebhookAsync(CreateWebhookModel data);
 
 	/// <summary>
+	/// Update webhook status<br/>
+	/// https://docs.alchemy.com/reference/update-webhook
+	/// </summary>
+	Task<ApiResponse<ResponseModel.CreateWebhookModel>> UpdateWebhookStatusAsync(UpdateWebhookStatusModel data);
+
+	/// <summary>
 	/// Add and remove addresses from a webhook<br/>
 	/// https://docs.alchemy.com/reference/update-webhook-addresses
 	/// </summary>

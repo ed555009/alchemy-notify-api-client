@@ -126,4 +126,23 @@ public class NotifyServiceTests : BaseServiceTests
 		// Then
 		Assert.Equal(HttpStatusCode.OK, result.StatusCode);
 	}
+
+	[Fact]
+	public async void UpdateWebhookStatusAsync_ShouldSucceed()
+	{
+		// Given
+		_ = _notifyApiMock
+			.Setup(x => x.UpdateWebhookStatusAsync(It.IsAny<RequestModel.UpdateWebhookStatusModel>()))
+			.Returns(CreateResponse<ResponseModel.CreateWebhookModel>(HttpStatusCode.OK));
+
+		// When
+		var result = await _notifyService.UpdateWebhookStatusAsync(new RequestModel.UpdateWebhookStatusModel
+		{
+			WebhookId = _webhookId,
+			IsActive = true
+		});
+
+		// Then
+		Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+	}
 }
