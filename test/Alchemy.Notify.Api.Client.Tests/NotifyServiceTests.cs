@@ -1,4 +1,5 @@
 using System.Net;
+using Alchemy.Notify.Api.Client.Configs;
 using Alchemy.Notify.Api.Client.Enums;
 using Alchemy.Notify.Api.Client.Interfaces;
 using Alchemy.Notify.Api.Client.Services;
@@ -12,6 +13,10 @@ public class NotifyServiceTests : BaseServiceTests
 {
 	private readonly Mock<INotifyApi> _notifyApiMock;
 	private readonly INotifyService _notifyService;
+
+	private readonly string _webhookId = "wh_tpyh33wlodqs0ybs";
+	private readonly string _address1 = "0x1f0bbe7bed347a8330d449b843f50844d4d35f90";
+	private readonly string _address2 = "0x1f0bbe7bed347a8330d449b843f50844d4d35f91";
 
 	public NotifyServiceTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
 	{
@@ -50,7 +55,7 @@ public class NotifyServiceTests : BaseServiceTests
 			Url = "https://localhost:8888",
 			Addresses = new List<string>
 			{
-				"0x1f0bbe7bed347a8330d449b843f50844d4d35f90"
+				_address1
 			}
 		});
 
@@ -69,16 +74,31 @@ public class NotifyServiceTests : BaseServiceTests
 		// When
 		var result = await _notifyService.UpdateWebhookAddressesAsync(new RequestModel.UpdateWebhookAddressModel
 		{
-			WebhookId = "wh_tpyh33wlodqs0ybs",
+			WebhookId = _webhookId,
 			AddressesToAdd = new List<string>
 			{
-				"0x1f0bbe7bed347a8330d449b843f50844d4d35f90"
+				_address1
 			},
 			AddressesToRemove = new List<string>
 			{
-				"0x0f9458500f0fc57f83879ff627b69bffa3221f6c"
+				_address2
 			}
 		});
+
+		// Then
+		Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+	}
+
+	[Fact]
+	public async void DeleteWebhookAsync_ShouldSucceed()
+	{
+		// Given
+		_ = _notifyApiMock
+			.Setup(x => x.DeleteWebhookAsync(It.IsAny<string>()))
+			.Returns(CreateEmptyResponse(HttpStatusCode.OK));
+
+		// When
+		var result = await _notifyService.DeleteWebhookAsync("");
 
 		// Then
 		Assert.Equal(HttpStatusCode.OK, result.StatusCode);
