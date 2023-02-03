@@ -8,20 +8,28 @@ namespace Alchemy.Notify.Api.Client.Interfaces;
 public interface INotifyApi
 {
 	[Get("/team-webhooks")]
-	Task<ApiResponse<ResponseModel.AllWebhooksModel>> GetAllWebhooksAsync();
+	Task<ApiResponse<ResponseModel.AllWebhooksModel>> GetAllWebhooksAsync([Header("X-Alchemy-Token")] string token);
 
 	[Post("/create-webhook")]
-	Task<ApiResponse<ResponseModel.CreateWebhookModel>> CreateWebhookAsync([Body] CreateWebhookModel payload);
+	Task<ApiResponse<ResponseModel.CreateWebhookModel>> CreateWebhookAsync(
+		[Header("X-Alchemy-Token")] string token,
+		[Body] CreateWebhookModel payload);
 
 	[Patch("/update-webhook-addresses")]
-	Task<ApiResponse<object?>> UpdateWebhookAddressesAsync([Body] UpdateWebhookAddressModel payload);
+	Task<ApiResponse<object?>> UpdateWebhookAddressesAsync(
+		[Header("X-Alchemy-Token")] string token,
+		[Body] UpdateWebhookAddressModel payload);
 
 	[Put("/update-webhook-addresses")]
-	Task<ApiResponse<object?>> ReplaceWebhookAddressesAsync([Body] ReplaceWebhookAddressModel payload);
+	Task<ApiResponse<object?>> ReplaceWebhookAddressesAsync(
+		[Header("X-Alchemy-Token")] string token,
+		[Body] ReplaceWebhookAddressModel payload);
 
 	[Put("/update-webhook")]
-	Task<ApiResponse<ResponseModel.CreateWebhookModel>> UpdateWebhookStatusAsync([Body] UpdateWebhookStatusModel payload);
+	Task<ApiResponse<ResponseModel.CreateWebhookModel>> UpdateWebhookStatusAsync(
+		[Header("X-Alchemy-Token")] string token,
+		[Body] UpdateWebhookStatusModel payload);
 
 	[Delete("/delete-webhook?webhook_id={webhookId}")]
-	Task<ApiResponse<object?>> DeleteWebhookAsync(string webhookId);
+	Task<ApiResponse<object?>> DeleteWebhookAsync([Header("X-Alchemy-Token")] string token, string webhookId);
 }

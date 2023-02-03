@@ -1,7 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Alchemy.Notify.Api.Client.Configs;
-using Alchemy.Notify.Api.Client.Handlers;
 using Alchemy.Notify.Api.Client.Interfaces;
 using Alchemy.Notify.Api.Client.Services;
 using Microsoft.Extensions.Configuration;
@@ -12,49 +11,27 @@ namespace Alchemy.Notify.Api.Client.Extensions;
 
 public static class ServicesExtensions
 {
-	public static IServiceCollection AddAlchemyNotifyApiConfig(
-		this IServiceCollection services,
-		IConfiguration configuration) =>
-			services.AddSingleton(configuration.GetSection("Alchemy")
-				.GetSection("NotifyApi")
-				.Get<NotifyApiConfig>());
-
 	public static IServiceCollection AddAlchemyNotifyApiServices(
 		this IServiceCollection services,
-		IConfiguration configuration)
+		IConfiguration configuration,
+		ServiceLifetime serviceLifetime = ServiceLifetime.Singleton)
 	{
 		var config = GetNotifyApiConfig(configuration);
 		var refitSettings = GetRefitSettings();
 
-		_ = services.AddSingleton<AuthHeaderHandler>();
-
 		_ = services
+			.AddSingleton(config)
 			.AddRefitClient<INotifyApi>(refitSettings)
-			.ConfigureHttpClient(c => c.BaseAddress = new Uri($"{config.BaseUrl}/api"))
-			.AddHttpMessageHandler<AuthHeaderHandler>();
+			.ConfigureHttpClient(c => c.BaseAddress = new Uri($"{config.BaseUrl}/api"));
 
 		_ = services.AddSingleton<INotifyService, NotifyService>();
 
-		return services;
-	}
-
-	public static IServiceCollection AddScopedAlchemyNotifyApiServices(
-		this IServiceCollection services,
-		IConfiguration configuration)
-	{
-		var config = GetNotifyApiConfig(configuration);
-		var refitSettings = GetRefitSettings();
-
-		_ = services.AddScoped<AuthHeaderHandler>();
-
-		_ = services
-			.AddRefitClient<INotifyApi>(refitSettings)
-			.ConfigureHttpClient(c => c.BaseAddress = new Uri($"{config.BaseUrl}/api"))
-			.AddHttpMessageHandler<AuthHeaderHandler>();
-
-		_ = services.AddScoped<INotifyService, NotifyService>();
-
-		return services;
+		return serviceLifetime switch
+		{
+			ServiceLifetime.Scoped => services.AddScoped<INotifyService, NotifyService>(),
+			ServiceLifetime.Transient => services.AddTransient<INotifyService, NotifyService>(),
+			_ => services.AddSingleton<INotifyService, NotifyService>()
+		};
 	}
 
 	static NotifyApiConfig GetNotifyApiConfig(IConfiguration configuration) =>
