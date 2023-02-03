@@ -12,6 +12,7 @@ namespace Alchemy.Notify.Api.Client.Tests;
 public class NotifyServiceTests : BaseServiceTests
 {
 	private readonly Mock<INotifyApi> _notifyApiMock;
+	private readonly Mock<NotifyApiConfig> _notifyApiConfigMock;
 	private readonly INotifyService _notifyService;
 
 	private readonly string _webhookId = "wh_tpyh33wlodqs0ybs";
@@ -21,7 +22,8 @@ public class NotifyServiceTests : BaseServiceTests
 	public NotifyServiceTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
 	{
 		_notifyApiMock = new Mock<INotifyApi>();
-		_notifyService = new NotifyService(_notifyApiMock.Object);
+		_notifyApiConfigMock = new Mock<NotifyApiConfig>();
+		_notifyService = new NotifyService(_notifyApiMock.Object, _notifyApiConfigMock.Object);
 	}
 
 	[Fact]
@@ -29,7 +31,7 @@ public class NotifyServiceTests : BaseServiceTests
 	{
 		// Given
 		_ = _notifyApiMock
-			.Setup(x => x.GetAllWebhooksAsync())
+			.Setup(x => x.GetAllWebhooksAsync(It.IsAny<string>()))
 			.Returns(CreateResponse<ResponseModel.AllWebhooksModel>(HttpStatusCode.OK));
 
 		// When
@@ -44,7 +46,7 @@ public class NotifyServiceTests : BaseServiceTests
 	{
 		// Given
 		_ = _notifyApiMock
-			.Setup(x => x.CreateWebhookAsync(It.IsAny<RequestModel.CreateWebhookModel>()))
+			.Setup(x => x.CreateWebhookAsync(It.IsAny<string>(), It.IsAny<RequestModel.CreateWebhookModel>()))
 			.Returns(CreateResponse<ResponseModel.CreateWebhookModel>(HttpStatusCode.OK));
 
 		// When
@@ -68,7 +70,7 @@ public class NotifyServiceTests : BaseServiceTests
 	{
 		// Given
 		_ = _notifyApiMock
-			.Setup(x => x.UpdateWebhookAddressesAsync(It.IsAny<RequestModel.UpdateWebhookAddressModel>()))
+			.Setup(x => x.UpdateWebhookAddressesAsync(It.IsAny<string>(), It.IsAny<RequestModel.UpdateWebhookAddressModel>()))
 			.Returns(CreateEmptyResponse(HttpStatusCode.OK));
 
 		// When
@@ -94,7 +96,7 @@ public class NotifyServiceTests : BaseServiceTests
 	{
 		// Given
 		_ = _notifyApiMock
-			.Setup(x => x.DeleteWebhookAsync(It.IsAny<string>()))
+			.Setup(x => x.DeleteWebhookAsync(It.IsAny<string>(), It.IsAny<string>()))
 			.Returns(CreateEmptyResponse(HttpStatusCode.OK));
 
 		// When
@@ -109,7 +111,7 @@ public class NotifyServiceTests : BaseServiceTests
 	{
 		// Given
 		_ = _notifyApiMock
-			.Setup(x => x.ReplaceWebhookAddressesAsync(It.IsAny<RequestModel.ReplaceWebhookAddressModel>()))
+			.Setup(x => x.ReplaceWebhookAddressesAsync(It.IsAny<string>(), It.IsAny<RequestModel.ReplaceWebhookAddressModel>()))
 			.Returns(CreateEmptyResponse(HttpStatusCode.OK));
 
 		// When
@@ -132,7 +134,7 @@ public class NotifyServiceTests : BaseServiceTests
 	{
 		// Given
 		_ = _notifyApiMock
-			.Setup(x => x.UpdateWebhookStatusAsync(It.IsAny<RequestModel.UpdateWebhookStatusModel>()))
+			.Setup(x => x.UpdateWebhookStatusAsync(It.IsAny<string>(), It.IsAny<RequestModel.UpdateWebhookStatusModel>()))
 			.Returns(CreateResponse<ResponseModel.CreateWebhookModel>(HttpStatusCode.OK));
 
 		// When

@@ -35,20 +35,20 @@ dotnet add package Alchemy.Notify.Api.Client
 }
 ```
 
-### Add configs & services
+### Add services
 
 ```csharp
 using Alchemy.Notify.Api.Client.Extensions;
 
 ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
-	services
-		.AddAlchemyNotifyApiConfig(configuration);
-		.AddAlchemyNotifyApiServices(configuration);
+	// this injects as SINGLETON
+	services.AddAlchemyNotifyApiServices(configuration);
+
+	// you can also inject as SCOPED or TRANSIENT by specifying the ServiceLifetime
+	services.AddAlchemyNotifyApiServices(configuration, ServiceLifetime.Scoped);
 }
 ```
-
-`AddAlchemyNotifyApiServices()` injects as SINGLETON, for web application, you can inject as SCOPED by using `AddScopedAlchemyNotifyApiServices()` instead.
 
 ### Using services
 
