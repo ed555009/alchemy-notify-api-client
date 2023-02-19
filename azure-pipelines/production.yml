@@ -18,6 +18,9 @@ stages:
         deploy:
           steps:
 
+          # checkout
+          - checkout: self
+
           # download .NET sdk
           - task: UseDotNet@2
             displayName: Use .NET Core sdk $(Build.DotnetSdkVersion)
