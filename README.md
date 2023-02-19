@@ -4,11 +4,11 @@
 ![Build Status](https://dev.azure.com/edwang/github/_apis/build/status/alchemy-notify-api-client?branchName=master)
 [![Nuget](https://img.shields.io/nuget/v/Alchemy.Notify.Api.Client)](https://www.nuget.org/packages/Alchemy.Notify.Api.Client)
 
-![Coverage](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=coverage)
-![Quality Gate Status](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=alert_status)
-![Reliability Rating](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=reliability_rating)
-![Security Rating](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=security_rating)
-![Vulnerabilities](https://sq.chainss.org/api/project_badges/measure?project=alchemy-notify-api-client&metric=vulnerabilities)
+![Coverage](https://sonarcloud.io/api/project_badges/measure?project=alchemy-notify-api-client&metric=coverage)
+![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=alchemy-notify-api-client&metric=alert_status)
+![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=alchemy-notify-api-client&metric=reliability_rating)
+![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=alchemy-notify-api-client&metric=security_rating)
+![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=alchemy-notify-api-client&metric=vulnerabilities)
 
 ## Description
 
