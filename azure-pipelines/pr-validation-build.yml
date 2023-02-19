@@ -74,15 +74,15 @@ stages:
         tags: $(Build.BuildId)
 
     # delete built docker image
-    # - bash: |
-    #     docker rmi -f $(Docker.ImageName):$(Build.BuildId)
-    #   displayName: Delete built docker image
-    #   condition: eq(variables['hasDockerfile'], 'true')
+    - bash: |
+        docker rmi -f $(Docker.ImageName):$(Build.BuildId)
+      displayName: Delete built docker image
+      condition: eq(variables['hasDockerfile'], 'true')
 
-    # # delete all dangling docker images
-    # - bash: |
-    #     docker rmi -f $(docker images -f "dangling=true" -q)
-    #   displayName: Delete all dangling docker images
-    #   condition: eq(variables['hasDockerfile'], 'true')
+    # delete all dangling docker images
+    - bash: |
+        docker rmi -f $(docker images -f "dangling=true" -q)
+      displayName: Delete all dangling docker images
+      condition: eq(variables['hasDockerfile'], 'true')
 
 ...
